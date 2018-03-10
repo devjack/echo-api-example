@@ -1,0 +1,59 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Echo example"
+  description: "A simple API to echo back messages."
+  contact:
+    name: "@developerjack"
+  license:
+    name: "MIT"
+host: "echo.services.developerjack.com"
+schemes:
+  - "https"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /echo:
+    get:
+      description: "Echo's back the query string param if provided."
+      operationId: "echo"
+      produces:
+        - "application/json"
+      parameters:
+        -
+          name: "echo"
+          in: "query"
+          description: "A string to echo back."
+          required: false
+          type: "string"
+      responses:
+        "200":
+          description: "Echo response"
+          schema:
+            $ref: "#/definitions/Echo"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+definitions:
+  Echo:
+    type: object
+    properties:
+      hello:
+        type: "string"
+        example: "world"
+      echo:
+        type: "string"
+  ErrorModel:
+    type: "object"
+    required:
+      - "code"
+      - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
