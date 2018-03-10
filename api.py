@@ -18,7 +18,9 @@ def hello():
     }
     return jsonify(response)
 
-
+@app.route('/docs')
+def docs():
+    return app.send_static_file('docs.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
