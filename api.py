@@ -14,7 +14,7 @@ def hello():
     echo = request.args.get('echo')
     response = {
         'hello': 'world',
-        'echo' : echo
+        'echo' : echo or ''
     }
     return jsonify(response)
 
