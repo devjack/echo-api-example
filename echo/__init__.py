@@ -10,7 +10,7 @@ def create_app():
     app = Flask(__name__, static_folder='static')
     app.register_blueprint(
         v1.bp,
-        url_prefix='/v1')
+        url_prefix='')
     return app
 
 if __name__ == '__main__':

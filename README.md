@@ -17,7 +17,22 @@ Here's a [spec I created earlier](https://app.swaggerhub.com/apis/devjack/Echo-A
 ## Implementing that API
 Start coding against the API spec to implement various features. This API is quite simple, just an `/echo` endpoint.
 
-### Setup
+### Code Generation
+You _can_ use a variety of tools to generate code from your API spec.
+
+```
+pip install swagger_py_codegen
+swagger_py_codegen -s openapi.yml . -p echo
+```
+
+To make this work for the spec I've then gone and modified the `/v1` prefix in the blueprint, and the `echo/v1/api/echo.py` file to implement `?echo`.
+
+I personally, however, am not a fan of code-gen and code magic in general. So, for such a simple API I prefer to setup and implement this myself.
+
+### Implementation
+If implementing this yourself then you want to setup the repo (or just clone this one) and then go ahead and install the dependencies.
+
+#### Setup
 ```
 git clone https://github.com/devjack/echo-api-example.git && cd echo-api-example
 
@@ -26,7 +41,7 @@ python -m venv ../echo-api-example.env
 . ../echo-api-example.env/bin/activate
 ```
 
-### Dependencies
+#### Dependencies
 Simplest - use requirements.txt
 
 ```

@@ -10,6 +10,9 @@ from .. import schemas
 class Echo(Resource):
 
     def get(self):
-        print(g.args)
-
-        return {}, 200, None
+        echo = request.args.get('echo')
+        response = {
+            'hello': 'world',
+            'echo' : echo or ''
+        }
+        return response, 200, None
